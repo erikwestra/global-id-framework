@@ -1,0 +1,4 @@
+.DS_Store
+*.pyc
+venv
+gidFramework/custom_settings.py
