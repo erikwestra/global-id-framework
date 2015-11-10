@@ -1,0 +1,42 @@
+/* Base CSS definitions shared across all pages. */
+
+body {
+    padding-top: 70px;
+}
+
+span.gid-heading {
+    font-size: 20px;
+    font-weight: bold;
+    color: #5050b0;
+    margin-top: 12px;
+    cursor:pointer;
+}
+
+.gid-top-bar {
+    background: #e5e5ff;
+    border-bottom: 1px solid #a0a0a0;
+}
+
+.gid-bottom-bar {
+    background: #e5e5ff;
+    border-top: 1px solid #a0a0a0;
+}
+
+button.gaps {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 11px;
+}
+
+a.gid-link {
+    margin-top: 4px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.gid-box {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+

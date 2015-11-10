@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Global ID Framework</title>
+
+    <link rel="stylesheet"
+          href="{{ STATIC_URL }}css/bootstrap.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+      </script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+      </script>
+    <![endif]-->
+  
+    <link rel="stylesheet"
+          href="{{ STATIC_URL }}css/base.css">
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top gid-top-bar" role="navigation">
+      <span class="navbar-text gid-heading"
+            {% if cur_page != "main" %} onclick="redirect('/')" {% endif %}>
+        &nbsp;Welcome to the Global ID Framework
+      </span>
+
+{% if cur_page == "signin" %}
+      <button type="button" id="btn-signin"
+              class="btn btn-default navbar-btn navbar-right gaps disabled">
+        Sign in
+      </button>
+{% else %}
+      <button type="button" id="btn-signin"
+              class="btn btn-default navbar-btn navbar-right gaps"
+              onclick="redirect('/signin')">
+        Sign in
+      </button>
+{% endif %}
+
+{% if cur_page == "signup" %}
+      <button type="button" id="btn-signup"
+              class="btn btn-default navbar-btn navbar-right gaps disabled">
+        Sign up
+      </button>
+{% else %}
+      <button type="button" id="btn-signup"
+              class="btn btn-default navbar-btn navbar-right gaps"
+              onclick="redirect('/signup')">
+        Sign up
+      </button>
+{% endif %}
+    </div>
+
+    <div class="container">
+      {% block body %}
+      {% endblock %}
+    </div>
+
+    <div class="navbar navbar-fixed-bottom gid-bottom-bar" role="navigation">
+      <ul class="nav nav-pills navbar-left">
+        <li role="presentation"
+            {% if cur_page == "why" %} class="disabled" {% endif %}>
+          <a class="gid-link" href="#" onclick="redirect('/why')">
+            Why?
+          </a>
+        </li>
+        <li role="presentation"
+            {% if cur_page == "users" %} class="disabled" {% endif %}>
+          <a class="gid-link" href="#" onclick="redirect('/users')">
+            Users
+          </a>
+        </li>
+        <li role="presentation"
+            {% if cur_page == "stakeholders" %} class="disabled" {% endif %}>
+          <a class="gid-link" href="#" onclick="redirect('/stakeholders')">
+            Stakeholders
+          </a>
+        </li>
+        <li role="presentation"
+            {% if cur_page == "developers" %} class="disabled" {% endif %}>
+          <a class="gid-link" href="#" onclick="redirect('/developers')">
+            Developers
+          </a>
+        </li>
+      </ul>
+
+      <ul class="nav nav-pills navbar-right">
+        <li role="presentation"
+            {% if cur_page == "team" %} class="disabled" {% endif %}>
+          <a class="gid-link" href="#" onclick="redirect('/team')">
+            Team
+          </a>
+        </li>
+        <li role="presentation"
+            {% if cur_page == "follow" %} class="disabled" {% endif %}>
+          <a class="gid-link" href="#" onclick="redirect('/follow')">
+            Follow
+          </a>
+        </li>
+        <li role="presentation"
+            {% if cur_page == "contact" %} class="disabled" {% endif %}>
+          <a class="gid-link" href="#" onclick="redirect('/contact')">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/gidFramework.js"></script>
+  </body>
+</html>
+
