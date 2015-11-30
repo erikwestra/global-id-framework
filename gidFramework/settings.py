@@ -39,6 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+
+    'gidFramework.authentication',
+    'gidFramework.shared',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,6 +87,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+
 # Setup our static file handler:
 
 STATIC_URL = "/static/"
@@ -95,4 +100,15 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
 )
+
+#############################################################################
+
+# Our "Authentication" module's settings:
+
+AUTHENTICATION_MAIN_URL          = "/admin"
+AUTHENTICATION_LOGIN_HEADING     = "GID Framework Admin"
+AUTHENTICATION_USER_TYPES        = ["administrator", "superuser"]
+AUTHENTICATION_ADMIN_USER_TYPE   = "superuser"
+AUTHENTICATION_USER_LABEL        = "Administrator"
+AUTHENTICATION_DEFAULT_USER_TYPE = "administrator"
 

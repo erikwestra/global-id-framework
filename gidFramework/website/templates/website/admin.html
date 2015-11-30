@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Global ID Framework</title>
+
+    <link rel="stylesheet"
+          href="{{ STATIC_URL }}css/bootstrap.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+      </script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+      </script>
+    <![endif]-->
+  
+    <link rel="stylesheet"
+          href="{{ STATIC_URL }}css/base.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2>Global ID Framework Admin</h2>
+        </div>
+        <div class="panel-body">
+          <h4>Welcome, {{ username }}.</h4>
+          <ul class="nav nav-pills nav-stacked">
+            <li>
+              <a href="/admin/check_availability">
+                Check Name Availability
+              </a>
+            </li>
+            <li>
+              <a href="/admin/names">
+                View Reserved Names
+              </a>
+            </li>
+{% if can_edit_admins %}
+            <li>
+              <a href="{{ edit_admins_url }}">
+                Add/Edit Administrators
+              </a>
+            </li>
+{% endif %}
+            <li>
+              <a href="{{ change_password_url }}">
+                Change Password
+              </a>
+            </li>
+            <li>
+              <a href="{{ logout_url }}">
+                Log Out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Global ID Framework</title>
+
+    <link rel="stylesheet"
+          href="{{ STATIC_URL }}css/bootstrap.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+      </script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+      </script>
+    <![endif]-->
+  
+    <style type="text/css">
+      .fillspace {
+        display: inline-block;
+        margin: 0;
+      }
+
+      .blue {
+        color: #024B8A;
+      }
+
+      .default-cursor {
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2>Reserved Names</h2>
+        </div>
+        <div class="panel-body">
+          <ul class="pager">
+{% if page > 1 %}
+            <li class="previous">
+              <a href="?page={{ page|add:"-1" }}">&larr; Previous</a>
+            </li>
+{% else %}
+            <li class="previous disabled"><a href="#">&larr; Previous</a></li>
+{% endif %}
+
+            <li>
+              <h5 class="blue fillspace">
+                Viewing page {{ page }} of {{ num_pages }}
+              </h5>
+            </li>
+
+{% if page < num_pages %}
+            <li class="next">
+              <a href="?page={{ page|add:"1" }}">Next &rarr;</a>
+            </li>
+{% else %}
+            <li class="next disabled"><a href="#">Next &rarr;</a></li>
+{% endif %}
+          </ul> 
+
+          <table class="table table-striped table-hover table-condensed">
+            <tbody>
+{% for name in names %}
+              <tr id="{{ name.id }}" class="default-cursor">
+                <td nowrap>
+                  {{ name.name }}
+                </td>
+              </tr>
+{% endfor %}
+            </tbody>
+          </table>
+
+          <div class="row-fluid">
+            <div class="pull-left">
+              <a href="/admin/name/find" class="btn btn-primary active"
+                 role="button">Find...</a>
+            </div>
+
+            <div class="pull-right">
+              <a href="/admin" class="btn btn-primary active"
+                 role="button">Done</a>
+            </div>
+
+            <div class="text-center">
+              <a href="/admin/name/add" class="btn btn-primary active"
+                 role="button">Add...</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      $(window).load(function() {
+          $('.table tbody tr').on("click", function() {
+            var name_id = $(this).attr("id");
+            window.location.href = "/admin/name/" + name_id;
+          });
+      });
+    </script>
+  </body>
+</html>
+

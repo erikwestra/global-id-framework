@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Global ID Framework</title>
+
+    <link rel="stylesheet"
+          href="{{ STATIC_URL }}css/bootstrap.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+      </script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+      </script>
+    <![endif]-->
+  
+    <style type="text/css">
+      .fillspace {
+        display: inline-block;
+        margin: 0;
+      }
+
+      .error {
+        color: #e00000;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      .blue {
+        color: #024B8A;
+      }
+
+      .default-cursor {
+        cursor: default;
+      }
+
+      .gap-right {
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2>{{ heading }}</h2>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="name">Reserved Name</label>
+              <input type="text" class="form-control"
+                     name="name" value="{{ name }}"
+{% if err_name %}
+                     area-describedby="name-error"
+{% endif %}
+              >
+              </input>
+{% if err_name %}
+              <span id="name-error" class="help-block error">
+                {{ err_name }}
+              </span>
+{% endif %}
+            </div>
+
+            <div class="form-group">
+              <label for="name">Twitter Sources</label>
+              <input type="text" class="form-control"
+                     name="twitter_sources" value="{{ twitter_sources }}"
+{% if err_twitter_sources %}
+                     area-describedby="twitter-sources-error"
+{% endif %}
+              >
+              </input>
+{% if err_twitter_sources %}
+              <span id="twitter-sources-error" class="help-block error">
+                {{ err_twitter_sources }}
+              </span>
+{% endif %}
+            </div>
+
+            <div class="form-group">
+              <label for="name">Domain Sources</label>
+              <input type="text" class="form-control"
+                     name="domain_sources" value="{{ domain_sources }}"
+{% if err_domain_sources %}
+                     area-describedby="domain-sources-error"
+{% endif %}
+              >
+              </input>
+{% if err_domain_sources %}
+              <span id="domain-sources-error" class="help-block error">
+                {{ err_domain_sources }}
+              </span>
+{% endif %}
+            </div>
+          </div>
+          <div class="panel-footer">
+            <button type="submit" name="submit" value="save"
+                    class="btn btn-primary gap-right">
+              Save
+            </button>
+            <button type="submit" name="submit" value="cancel"
+                    class="btn btn-warning">
+              Cancel
+            </button>
+{% if can_delete %}
+            <button type="submit" name="submit" value="delete"
+                    class="btn btn-danger pull-right">
+              Delete
+            </button>
+{% endif %}
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+  </body>
+</html>
+

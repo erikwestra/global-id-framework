@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Global ID Framework</title>
+
+    <link rel="stylesheet"
+          href="{{ STATIC_URL }}css/bootstrap.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+      </script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+      </script>
+    <![endif]-->
+  
+    <style type="text/css">
+      .gap-right {
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2>Delete Reserved Name</h2>
+          </div>
+          <div class="panel-body">
+            <b>
+              Are you sure you want to delete the reserved name "{{ name }}"?
+            </b>
+          </div>
+          <div class="panel-footer">
+            <button type="submit" name="submit" value="delete"
+                    class="btn btn-danger gap-right">
+              Delete
+            </button>
+            <button type="submit" name="submit" value="cancel"
+                    class="btn btn-warning">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"
+            src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+  </body>
+</html>
+
